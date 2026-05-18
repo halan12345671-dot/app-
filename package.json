@@ -1,0 +1,21 @@
+{
+  "name": "sales-warehouse-management",
+  "version": "1.0.0",
+  "description": "Full-stack Sales and Warehouse Management System",
+  "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "build:all": "cd backend && npm run build && cd ../frontend && npm run build"
+  },
+  "keywords": [
+    "sales",
+    "warehouse",
+    "inventory",
+    "management",
+    "ecommerce"
+  ],
+  "dependencies": {
+    "express-session": "^1.19.0"
+  }
+}

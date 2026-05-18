@@ -1,0 +1,18 @@
+.layout {
+  min-height: 100vh;
+}
+
+.header {
+  background: #fff;
+  padding: 0 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sider {
+  background: #1890ff;
+}
+
+.content {
+  margin: 0;
+  background: #f0f2f5;
+}
