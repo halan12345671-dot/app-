@@ -10,11 +10,14 @@ import SalesOrders from './pages/SalesOrders';
 import PurchaseOrders from './pages/PurchaseOrders';
 import ProtectedRoute from './components/ProtectedRoute';
 
+import Register from './pages/Register';
+
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route
           path="/*"
           element={
