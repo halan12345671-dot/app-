@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://sales-warehouse-backend.onrender.com/api';
+let API_URL = process.env.REACT_APP_API_URL || 'https://sales-warehouse-backend.onrender.com/api';
+if (API_URL && !API_URL.endsWith('/api') && !API_URL.endsWith('/api/')) {
+  API_URL = `${API_URL.replace(/\/$/, '')}/api`;
+}
 
 const apiClient = axios.create({
   baseURL: API_URL,
