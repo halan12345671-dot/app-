@@ -5,7 +5,12 @@ const { sequelize } = require('./models');
 
 dotenv.config();
 
+const passport = require('passport');
+require('./config/passport');
+
 const app = express();
+
+app.use(passport.initialize());
 
 // Middleware
 const corsOrigin = process.env.CORS_ORIGIN;
