@@ -44,7 +44,8 @@ function Login() {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = `${process.env.REACT_APP_API_URL}/auth/google`;
+    const apiUrl = apiClient.defaults.baseURL || 'https://sales-warehouse-backend.onrender.com/api';
+    window.location.href = `${apiUrl}/auth/google`;
   };
 
   const handleRegister = () => {
