@@ -3,7 +3,7 @@ import { Form, Input, Button, Card, message, Divider } from 'antd';
 import { UserOutlined, LockOutlined, GoogleOutlined } from '@ant-design/icons';
 import apiClient from '../api/apiClient';
 import { useAuthStore } from '../store/store';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import './Login.css';
 
 function Login() {
@@ -91,7 +91,7 @@ function Login() {
         </Form>
 
         <div className="register-link">
-          Don't have an account? <a onClick={handleRegister}>Register here</a>
+          Don't have an account? <Link to="/register">Register here</Link>
         </div>
       </Card>
     </div>
