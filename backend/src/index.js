@@ -39,6 +39,17 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'Server is running' });
 });
 
+// Debug environment config (safe fields only)
+app.get('/api/debug', (req, res) => {
+  res.status(200).json({
+    FRONTEND_URL: process.env.FRONTEND_URL || null,
+    CORS_ORIGIN: process.env.CORS_ORIGIN || null,
+    NODE_ENV: process.env.NODE_ENV || null,
+    HAS_GOOGLE_CLIENT_ID: !!process.env.GOOGLE_CLIENT_ID,
+    HAS_GOOGLE_CLIENT_SECRET: !!process.env.GOOGLE_CLIENT_SECRET,
+  });
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
