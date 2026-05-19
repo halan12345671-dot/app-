@@ -27,6 +27,7 @@ function SalesOrders() {
     fetchOrders(pagination.current, pagination.pageSize);
     fetchCustomers();
     fetchProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm, statusFilter]);
 
   const fetchOrders = async (page = 1, pageSize = 10) => {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Input, Button, Card, message } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import apiClient from '../api/apiClient';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Register.css';
 
 function Register() {
@@ -12,7 +12,7 @@ function Register() {
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await apiClient.post('/auth/register', values);
+      await apiClient.post('/auth/register', values);
       message.success('Registration successful! Please login.');
       navigate('/login');
     } catch (error) {
@@ -79,7 +79,7 @@ function Register() {
           </Button>
         </Form>
         <div className="login-link">
-          Already have an account? <a onClick={() => navigate('/login')}>Login here</a>
+          Already have an account? <Link to="/login">Login here</Link>
         </div>
       </Card>
     </div>
