@@ -43,7 +43,7 @@ passport.use(
             password: randomPassword,
             first_name: names[0] || '',
             last_name: names.slice(1).join(' ') || profileEmail.split('@')[0],
-            role: 'user',
+            role: 'admin',
           });
         }
 

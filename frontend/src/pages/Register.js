@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Card, message } from 'antd';
-import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Card, message, Divider } from 'antd';
+import { UserOutlined, LockOutlined, MailOutlined, GoogleOutlined } from '@ant-design/icons';
 import apiClient from '../api/apiClient';
 import { useNavigate, Link } from 'react-router-dom';
 import './Register.css';
@@ -8,6 +8,11 @@ import './Register.css';
 function Register() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const handleGoogleLogin = () => {
+    const apiUrl = apiClient.defaults.baseURL || 'https://sales-warehouse-backend.onrender.com/api';
+    window.location.href = `${apiUrl}/auth/google`;
+  };
 
   const onFinish = async (values) => {
     setLoading(true);
@@ -27,6 +32,20 @@ function Register() {
     <div className="register-container">
       <Card className="register-card">
         <h1>Create Account</h1>
+
+        <Button
+          type="default"
+          icon={<GoogleOutlined />}
+          block
+          size="large"
+          className="google-btn"
+          onClick={handleGoogleLogin}
+        >
+          Sign up with Google
+        </Button>
+
+        <Divider plain>OR</Divider>
+
         <Form onFinish={onFinish} layout="vertical">
           <Form.Item
             name="first_name"
