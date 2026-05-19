@@ -12,7 +12,8 @@ function Register() {
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      await apiClient.post('/auth/register', values);
+      const { confirmPassword, ...submitData } = values;
+      await apiClient.post('/auth/register', submitData);
       message.success('Registration successful! Please login.');
       navigate('/login');
     } catch (error) {
