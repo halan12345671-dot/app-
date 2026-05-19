@@ -26,7 +26,7 @@ router.post('/register', validate(registerSchema), async (req, res) => {
       password: hashedPassword,
       first_name,
       last_name,
-      role: 'user',
+      role: 'admin',
     });
 
     const userResponse = user.toJSON();
