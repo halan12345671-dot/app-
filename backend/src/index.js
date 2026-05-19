@@ -8,7 +8,13 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors({ origin: process.env.CORS_ORIGIN }));
+const corsOrigin = process.env.CORS_ORIGIN;
+if (!corsOrigin || corsOrigin === '*') {
+  app.use(cors());
+} else {
+  const origins = corsOrigin.split(',').map(o => o.trim());
+  app.use(cors({ origin: origins }));
+}
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
