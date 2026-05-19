@@ -76,7 +76,8 @@ router.get('/google', passport.authenticate('google', {
 router.get(
   '/google/callback',
   (req, res, next) => {
-    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+    const frontendUrl = process.env.FRONTEND_URL || 
+      (process.env.CORS_ORIGIN && process.env.CORS_ORIGIN !== '*' ? process.env.CORS_ORIGIN.split(',')[0].trim() : 'http://localhost:3000');
     passport.authenticate('google', {
       failureRedirect: `${frontendUrl}/login?error=google_auth_failed`,
       session: false,
@@ -84,7 +85,8 @@ router.get(
   },
   (req, res) => {
     const { token, user } = req.user;
-    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+    const frontendUrl = process.env.FRONTEND_URL || 
+      (process.env.CORS_ORIGIN && process.env.CORS_ORIGIN !== '*' ? process.env.CORS_ORIGIN.split(',')[0].trim() : 'http://localhost:3000');
     const redirectURL = `${frontendUrl}/login?token=${token}&email=${encodeURIComponent(user.email)}&first_name=${encodeURIComponent(user.first_name)}&last_name=${encodeURIComponent(user.last_name)}&role=${user.role}`;
     res.redirect(redirectURL);
   }
